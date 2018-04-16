@@ -1,0 +1,47 @@
+//
+//  LabelController.swift
+//  phone and watch
+//
+//  Created by Julian Ellis on 02/10/2016.
+//  Copyright © 2016 Julian Ellis. All rights reserved.
+//
+
+import WatchKit
+import Foundation
+
+class LabelController: WKInterfaceController {
+    
+    @IBOutlet var readNote: WKInterfaceLabel!
+    
+        
+    
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
+        
+        
+        let note = context as? String
+        readNote.setText(note)
+        
+    }
+    
+    
+    override func pushController(withName name: String, context: Any?) {
+        print(context as Any)
+    }
+    
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
+        print(segueIdentifier)
+        return nil
+    }
+    
+    override func willActivate() {
+        // This method is called when watch view controller is about to be visible to user
+        super.willActivate()
+    }
+    
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        super.didDeactivate()
+    }
+    
+}
