@@ -1,0 +1,107 @@
+//
+//  GameViewController.swift
+//  phone and watch
+//
+//  Created by Julian Ellis on 12/09/2016.
+//  Copyright © 2016 Julian Ellis. All rights reserved.
+//
+
+import UIKit
+import SpriteKit
+import GameplayKit
+
+class GameViewController: UIViewController {
+
+    @IBOutlet weak var scrollPage: UIScrollView!
+    
+    @IBOutlet weak var readNote: UILabel!
+    
+    
+    @IBAction func getHappyNote(_ sender: UIButton) {
+        
+             readNote.text = Saying.getHappySaying()
+           }
+    
+   
+    
+    @IBAction func getMotivateNote(_ sender: UIButton) {
+        
+        readNote.text = Saying.getMotivationSaying()
+           }
+    
+    
+    
+    
+    
+    
+    
+    
+    @IBOutlet weak var mainToolbar: UIToolbar!
+    
+    
+    @IBAction func setReminder(_ sender: UIBarButtonItem) {
+        
+       
+        
+    }
+    
+  
+    
+     
+   
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.scrollPage.frame = CGRect()
+        scrollPage.isScrollEnabled = false
+        
+ 
+        
+        let scene = GameScene.newGameScene()
+        
+        // Present the scene
+        let skView = self.view as! SKView
+        skView.presentScene(scene)
+        
+        skView.ignoresSiblingOrder = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
+    }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
+        } else {
+            return .all
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Release any cached data, images, etc that aren't in use.
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+}
+
+//allows to set border color
+extension UIView {
+    
+    
+    @IBInspectable var borderColor: UIColor? {
+        get {
+            return UIColor(cgColor: layer.borderColor!)
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+            
+        }
+    }
+}
